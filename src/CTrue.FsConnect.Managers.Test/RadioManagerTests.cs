@@ -54,7 +54,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetCom1StandbyFrequency()
         {
             // Arrange
-            double freq = 124.774d;
+            decimal freq = 121.775m;
 
             // Act
             _manager.SetCom1StandbyFrequency(freq);
@@ -68,7 +68,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetCom1ActiveFrequency()
         {
             // Arrange
-            double freq = 124.774d;
+            decimal freq = 122.775m;
 
             // Act
             _manager.SetCom1ActiveFrequency(freq);
@@ -82,7 +82,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetCom2StandbyFrequency()
         {
             // Arrange
-            double freq = 124.774d;
+            decimal freq = 123.775m;
 
             // Act
             _manager.SetCom2StandbyFrequency(freq);
@@ -96,7 +96,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetCom2ActiveFrequency()
         {
             // Arrange
-            double freq = 124.773d;
+            decimal freq = 124.775m;
 
             // Act
             _manager.SetCom2ActiveFrequency(freq);
@@ -110,9 +110,9 @@ namespace CTrue.FsConnect.Managers.Test
         public void SwapCom1()
         {
             // Arrange
-            double freq = 124.773d;
+            decimal freq = 125.775m;
             _manager.SetCom1StandbyFrequency(freq);
-            _manager.SetCom1ActiveFrequency(125.000d);
+            _manager.SetCom1ActiveFrequency(125.000m);
 
             // Act
             _manager.Com1Swap();
@@ -126,9 +126,9 @@ namespace CTrue.FsConnect.Managers.Test
         public void SwapCom2()
         {
             // Arrange
-            double freq = 124.773d;
+            decimal freq = 126.775m;
             _manager.SetCom2StandbyFrequency(freq);
-            _manager.SetCom2ActiveFrequency(125.000d);
+            _manager.SetCom2ActiveFrequency(125.000m);
 
             // Act
             _manager.Com2Swap();
@@ -144,7 +144,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetNav1StandbyFrequency()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
 
             // Act
             _manager.SetNav1StandbyFrequency(freq);
@@ -158,7 +158,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetNav1ActiveFrequency()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
 
             // Act
             _manager.SetNav1ActiveFrequency(freq);
@@ -172,7 +172,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetNav2StandbyFrequency()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
 
             // Act
             _manager.SetNav2StandbyFrequency(freq);
@@ -186,7 +186,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetNav2ActiveFrequency()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
 
             // Act
             _manager.SetNav2ActiveFrequency(freq);
@@ -200,9 +200,9 @@ namespace CTrue.FsConnect.Managers.Test
         public void SwapNav1()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
             _manager.SetNav1StandbyFrequency(freq);
-            _manager.SetNav1ActiveFrequency(125.000d);
+            _manager.SetNav1ActiveFrequency(125.000m);
 
             // Act
             _manager.Nav1Swap();
@@ -216,9 +216,9 @@ namespace CTrue.FsConnect.Managers.Test
         public void SwapNav2()
         {
             // Arrange
-            double freq = 110.7;
+            decimal freq = 110.7m;
             _manager.SetNav2StandbyFrequency(freq);
-            _manager.SetNav2ActiveFrequency(125.000d);
+            _manager.SetNav2ActiveFrequency(125.000m);
 
             // Act
             _manager.Nav2Swap();

@@ -25,12 +25,12 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// The active frequency is changed by setting the COM1 standby frequency and calling <see cref="IRadioManager.COM1Swap()"/>
         /// </remarks>
-        double Com1ActiveFrequency { get; }
+        decimal Com1ActiveFrequency { get; }
 
         /// <summary>
         /// Gets the COM1 Standby frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
         /// </summary>
-        double Com1StandbyFrequency { get; }
+        decimal Com1StandbyFrequency { get; }
 
         /// <summary>
         /// Gets the COM2 Active frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
@@ -38,12 +38,12 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// The active frequency is changed by setting the COM2 standby frequency and calling <see cref="IRadioManager.COM2Swap()"/>
         /// </remarks>
-        double Com2ActiveFrequency { get; }
+        decimal Com2ActiveFrequency { get; }
 
         /// <summary>
         /// Gets the COM2 Standby frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
         /// </summary>
-        double Com2StandbyFrequency { get; }
+        decimal Com2StandbyFrequency { get; }
 
         /// <summary>
         /// Sets the COM1 standby frequency.
@@ -52,7 +52,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetCom1StandbyFrequency(double frequency);
+        void SetCom1StandbyFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the COM1 active frequency.
@@ -61,7 +61,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetCom1ActiveFrequency(double frequency);
+        void SetCom1ActiveFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the COM2 standby frequency.
@@ -70,7 +70,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetCom2StandbyFrequency(double frequency);
+        void SetCom2StandbyFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the COM2 active frequency.
@@ -79,7 +79,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetCom2ActiveFrequency(double frequency);
+        void SetCom2ActiveFrequency(decimal frequency);
 
         /// <summary>
         /// Swaps COMS1 active and standby frequency.
@@ -99,12 +99,12 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// The active frequency is changed by setting the Nav1 standby frequency and calling <see cref="IRadioManager.Nav1Swap()"/>
         /// </remarks>
-        double Nav1ActiveFrequency { get; }
+        decimal Nav1ActiveFrequency { get; }
 
         /// <summary>
         /// Gets the Nav1 Standby frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
         /// </summary>
-        double Nav1StandbyFrequency { get; }
+        decimal Nav1StandbyFrequency { get; }
 
         /// <summary>
         /// Gets the Nav2 Active frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
@@ -112,12 +112,12 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// The active frequency is changed by setting the Nav2 standby frequency and calling <see cref="IRadioManager.Nav2Swap()"/>
         /// </remarks>
-        double Nav2ActiveFrequency { get; }
+        decimal Nav2ActiveFrequency { get; }
 
         /// <summary>
         /// Gets the Nav2 Standby frequency as returned from the last call with <see cref="IRadioManager.Update()"/>.
         /// </summary>
-        double Nav2StandbyFrequency { get; }
+        decimal Nav2StandbyFrequency { get; }
 
         /// <summary>
         /// Gets the transponder code.
@@ -131,7 +131,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetNav1StandbyFrequency(double frequency);
+        void SetNav1StandbyFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the Nav1 active frequency.
@@ -140,7 +140,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetNav1ActiveFrequency(double frequency);
+        void SetNav1ActiveFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the Nav2 standby frequency.
@@ -149,7 +149,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetNav2StandbyFrequency(double frequency);
+        void SetNav2StandbyFrequency(decimal frequency);
 
         /// <summary>
         /// Sets the Nav2 active frequency.
@@ -158,7 +158,7 @@ namespace CTrue.FsConnect.Managers
         /// <remarks>
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
-        void SetNav2ActiveFrequency(double frequency);
+        void SetNav2ActiveFrequency(decimal frequency);
 
         /// <summary>
         /// Swaps NavS1 active and standby frequency.
@@ -219,32 +219,32 @@ namespace CTrue.FsConnect.Managers
         #region COM
 
         /// <inheritdoc />
-        public double Com1StandbyFrequency { get; private set; }
+        public decimal Com1StandbyFrequency { get; private set; }
 
         /// <inheritdoc />
-        public double Com1ActiveFrequency {  get; private set; }
+        public decimal Com1ActiveFrequency {  get; private set; }
 
         /// <inheritdoc />
-        public double Com2StandbyFrequency { get; private set; }
+        public decimal Com2StandbyFrequency { get; private set; }
 
         /// <inheritdoc />
-        public double Com2ActiveFrequency { get; private set; }
+        public decimal Com2ActiveFrequency { get; private set; }
 
         #endregion
 
         #region NAV
 
         /// <inheritdoc />
-        public double Nav1StandbyFrequency { get; private set; }
+        public decimal Nav1StandbyFrequency { get; private set; }
 
         /// <inheritdoc />
-        public double Nav1ActiveFrequency { get; private set; }
+        public decimal Nav1ActiveFrequency { get; private set; }
 
         /// <inheritdoc />
-        public double Nav2StandbyFrequency { get; private set; }
+        public decimal Nav2StandbyFrequency { get; private set; }
 
         /// <inheritdoc />
-        public double Nav2ActiveFrequency { get; private set; }
+        public decimal Nav2ActiveFrequency { get; private set; }
 
         #endregion
 
@@ -269,19 +269,19 @@ namespace CTrue.FsConnect.Managers
             #region COM
 
             _com1StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComStbyRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComStbyRadioSet);
 
             _com1ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1ActiveRadioSetHzEventId, FsEventNameId.ComRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1ActiveRadioSetHzEventId, FsEventNameId.ComRadioSet);
 
             _com1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbySwapEventId, FsEventNameId.ComStbyRadioSwitchTo);
 
             _com2StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2StbyRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2StbyRadioSet);
 
             _com2ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2ActiveRadioSetHzEventId, FsEventNameId.Com2RadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2ActiveRadioSetHzEventId, FsEventNameId.Com2RadioSet);
 
             _com2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbySwapEventId, FsEventNameId.Com2RadioSwap);
@@ -291,19 +291,19 @@ namespace CTrue.FsConnect.Managers
             #region NAV
 
             _nav1StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbyRadioSetHzEventId, FsEventNameId.Nav1StbyRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbyRadioSetHzEventId, FsEventNameId.Nav1StbySet);
 
             _nav1ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1ActiveRadioSetHzEventId, FsEventNameId.Nav1RadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1ActiveRadioSetHzEventId, FsEventNameId.Nav1RadioSet);
 
             _nav1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbySwapEventId, FsEventNameId.Nav1RadioSwap);
 
             _nav2StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbyRadioSetHzEventId, FsEventNameId.Nav2StbyRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbyRadioSetHzEventId, FsEventNameId.Nav2StbySet);
 
             _nav2ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2ActiveRadioSetHzEventId, FsEventNameId.Nav2RadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2ActiveRadioSetHzEventId, FsEventNameId.Nav2RadioSet);
 
             _nav2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbySwapEventId, FsEventNameId.Nav2RadioSwap);
@@ -351,31 +351,31 @@ namespace CTrue.FsConnect.Managers
         }
 
         /// <inheritdoc />
-        public void SetCom1StandbyFrequency(double frequency)
+        public void SetCom1StandbyFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetCom1ActiveFrequency(double frequency)
+        public void SetCom1ActiveFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetCom2StandbyFrequency(double frequency)
+        public void SetCom2StandbyFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetCom2ActiveFrequency(double frequency)
+        public void SetCom2ActiveFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com2ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
@@ -391,31 +391,31 @@ namespace CTrue.FsConnect.Managers
         }
 
         /// <inheritdoc />
-        public void SetNav1StandbyFrequency(double frequency)
+        public void SetNav1StandbyFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav1StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav1StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetNav1ActiveFrequency(double frequency)
+        public void SetNav1ActiveFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav1ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav1ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetNav2StandbyFrequency(double frequency)
+        public void SetNav2StandbyFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav2StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav2StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetNav2ActiveFrequency(double frequency)
+        public void SetNav2ActiveFrequency(decimal frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav2ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav2ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
         }
 
         /// <inheritdoc />
@@ -433,7 +433,7 @@ namespace CTrue.FsConnect.Managers
         /// <inheritdoc />
         public void SetTransponderCode(uint code)
         {
-            uint bcdCode = Bcd.Dec2Bcd(code);
+            uint bcdCode = Bcd.UInt2Bcd(code);
             _fsConnect.TransmitClientEvent(_setTransponderCodeEventId, bcdCode, _groupId);
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using NUnit.Framework;
 
 namespace CTrue.FsConnect.Managers.Test
@@ -62,13 +63,13 @@ namespace CTrue.FsConnect.Managers.Test
 
 
         [Test]
-        public void SetAltitudeLock()
+        public void SetAltitudeLock([Values(10000d, 11000d, 12200d)] Double altitude)
         {
-            // Arrange
-            double altitude = 14000;
-
             // Act
             _manager.SetAltitude(altitude);
+
+            // There is a race condition for this.
+            Thread.Sleep(500);
 
             // Assert
             _manager.Update();
