@@ -54,7 +54,7 @@ namespace CTrue.FsConnect.Managers.Test
         public void SetCom1StandbyFrequency()
         {
             // Arrange
-            decimal freq = 121.775m;
+            decimal freq = 125.775m;
 
             // Act
             _manager.SetCom1StandbyFrequency(freq);

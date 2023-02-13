@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.FlightSimulator.SimConnect;
+using static CTrue.FsConnect.RadioFreq;
 
 namespace CTrue.FsConnect.Managers
 {
@@ -269,19 +270,19 @@ namespace CTrue.FsConnect.Managers
             #region COM
 
             _com1StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComStbyRadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComStbyRadioSetHz);
 
             _com1ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1ActiveRadioSetHzEventId, FsEventNameId.ComRadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1ActiveRadioSetHzEventId, FsEventNameId.ComRadioSetHz);
 
             _com1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbySwapEventId, FsEventNameId.ComStbyRadioSwitchTo);
 
             _com2StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2StbyRadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2StbyRadioSetHz);
 
             _com2ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2ActiveRadioSetHzEventId, FsEventNameId.Com2RadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2ActiveRadioSetHzEventId, FsEventNameId.Com2RadioSetHz);
 
             _com2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbySwapEventId, FsEventNameId.Com2RadioSwap);
@@ -291,19 +292,19 @@ namespace CTrue.FsConnect.Managers
             #region NAV
 
             _nav1StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbyRadioSetHzEventId, FsEventNameId.Nav1StbySet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbyRadioSetHzEventId, FsEventNameId.Nav1StbyRadioSetHz);
 
             _nav1ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1ActiveRadioSetHzEventId, FsEventNameId.Nav1RadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav1ActiveRadioSetHzEventId, FsEventNameId.Nav1RadioSetHz);
 
             _nav1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _nav1StbySwapEventId, FsEventNameId.Nav1RadioSwap);
 
             _nav2StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbyRadioSetHzEventId, FsEventNameId.Nav2StbySet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbyRadioSetHzEventId, FsEventNameId.Nav2StbyRadioSetHz);
 
             _nav2ActiveRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2ActiveRadioSetHzEventId, FsEventNameId.Nav2RadioSet);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _nav2ActiveRadioSetHzEventId, FsEventNameId.Nav2RadioSetHz);
 
             _nav2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _nav2StbySwapEventId, FsEventNameId.Nav2RadioSwap);
@@ -337,15 +338,15 @@ namespace CTrue.FsConnect.Managers
             if(!resetRes)
                 throw new TimeoutException("Radio Manager data was not returned from MSFS within timeout");
 
-            Com1StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Com1StandbyFrequency).Value;
-            Com1ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Com1ActiveFrequency).Value;
-            Com2ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Com2ActiveFrequency).Value;
-            Com2StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Com2StandbyFrequency).Value;
+            Com1StandbyFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Com1StandbyFrequency);
+            Com1ActiveFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Com1ActiveFrequency);
+            Com2ActiveFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Com2ActiveFrequency);
+            Com2StandbyFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Com2StandbyFrequency);
 
-            Nav1StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Nav1StandbyFrequency).Value;
-            Nav1ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Nav1ActiveFrequency).Value;
-            Nav2ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Nav2ActiveFrequency).Value;
-            Nav2StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Nav2StandbyFrequency).Value;
+            Nav1StandbyFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Nav1StandbyFrequency);
+            Nav1ActiveFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Nav1ActiveFrequency);
+            Nav2ActiveFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Nav2ActiveFrequency);
+            Nav2StandbyFrequency = Bcd32Khz2Mhz(_radioManagerSimVars.Nav2StandbyFrequency);
 
             TransponderCode = _radioManagerSimVars.TransponderCode;
         }
@@ -353,29 +354,25 @@ namespace CTrue.FsConnect.Managers
         /// <inheritdoc />
         public void SetCom1StandbyFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetCom1ActiveFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1ActiveRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetCom2StandbyFrequency(decimal frequency)
-        {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+        { 
+            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetCom2ActiveFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com2ActiveRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
@@ -393,29 +390,25 @@ namespace CTrue.FsConnect.Managers
         /// <inheritdoc />
         public void SetNav1StandbyFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav1StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav1StbyRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetNav1ActiveFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav1ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav1ActiveRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetNav2StandbyFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav2StbyRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav2StbyRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
         public void SetNav2ActiveFrequency(decimal frequency)
         {
-            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_nav2ActiveRadioSetHzEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_nav2ActiveRadioSetHzEventId, Mhz2Hz(frequency), _groupId);
         }
 
         /// <inheritdoc />
